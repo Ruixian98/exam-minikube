@@ -48,6 +48,7 @@ kubectl get po -A
 ![kubectl_get_po](./images/kubectl_get_pod.png)
 ---
 ### Step 2 Develop a simple Helm chart
+
 please check files under dir ./exam_chart/
 ---
 ### Step 3 Deploy the Helm chart and verify
@@ -67,14 +68,26 @@ helm install hello ./exam_chart
 ```
 ![helm_instasll](./images/helm_install.png)
 
-port-forward service and access
+port-forward service 
 ```
 kubectl port-forward service/hello-service 8080:80
 ```
 ![helm_version](./images/port_forward.png)
-open a new terminal
+open a new terminal and access service
 ```
 curl 127.0.0.1:8080
 ```
 ![helm_version](./images/access.png)
 ---
+### Step 4 Install Loki in the K8s cluster with Helm
+#it's my first tiem to install loki.
+
+reference documents:  
+- https://grafana.com/docs/loki/latest/installation/helm/install-scalable/
+- https://juejin.cn/post/7198826344582135866
+```
+helm repo add grafana https://grafana.github.io/helm-charts 
+helm repo update
+helm install --values loki_values.yaml loki grafana/loki
+```
+![install_loki](./images/install_loki.png)

@@ -1,0 +1,38 @@
+loki:
+  enabled: true
+  persistence:
+    enabled: true
+    storageClassName: local-path
+    size: 5Gi
+  serviceScheme: https
+  user: admin
+  password: admins
+  config:
+    ingester:
+      chunk_idle_period: 1h
+      max_chunk_age: 4h
+    compactor:
+      retention_enabled: true
+  serviceMonitor:
+    enabled: true
+
+promtail:
+  enabled: true
+  config:
+    snippets:
+      pipelineStages:
+        - cri: {}  
+  extraArgs:
+    - -client.external-labels=cluster=ctyun        
+  serviceMonitor:
+    # -- If enabled, ServiceMonitor resources for Prometheus Operator are created
+    enabled: true
+
+fluent-bit:
+  enabled: false
+
+filebeat:
+  enabled: false
+
+logstash:
+  enabled: false
