@@ -1,17 +1,19 @@
 # exam-minikube
 
-reference documents: 
-- https://kubernetes.io/zh-cn/docs/tutorials/hello-minikube/
-- https://minikube.sigs.k8s.io/docs/start/
-- https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux/
----
+
 My EC2 configuration:
 - 2 CPUs
 - 8GB of free memory
 - 30GB of free disk space
----
+
 ## EXAM STEP
+---
 ### Step 1 install local k8s with minikube
+reference documents: 
+- https://kubernetes.io/zh-cn/docs/tutorials/hello-minikube/
+- https://minikube.sigs.k8s.io/docs/start/
+- https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux/
+
 install docker 
 ```
 sudo yum install docker -y
@@ -25,7 +27,7 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 minikube start
 ```
-![minikube_start](.images/minikube_start.png)
+![minikube_start](./images/minikube_start.png)
 
 install kubectl
 ```
@@ -37,10 +39,13 @@ check kubectl
 ```
 kubectl version --client
 ```
-![kubectl_version](.images/kubectl_version.png)
+![kubectl_version](./images/kubectl_version.png)
 
 check kube cluster
 ```
 kubectl get po -A
 ```
-![kubectl_get_po](.images/kubectl_get_pod.png)
+![kubectl_get_po](./images/kubectl_get_pod.png)
+---
+### Step 2 Develop a simple Helm chart
+please check files under dir ./exam_chart/

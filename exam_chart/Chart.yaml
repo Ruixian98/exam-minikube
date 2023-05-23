@@ -1,0 +1,5 @@
+apiVersion: v2
+name: hello
+description: exam chart
+type: application
+version: 1.0.0
