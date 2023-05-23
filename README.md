@@ -49,3 +49,32 @@ kubectl get po -A
 ---
 ### Step 2 Develop a simple Helm chart
 please check files under dir ./exam_chart/
+---
+### Step 3 Deploy the Helm chart and verify
+install helm
+reference documents: https://helm.sh/zh/docs/intro/install/
+```
+wget https://get.helm.sh/helm-v3.12.0-linux-amd64.tar.gz
+tar -zxvf helm-v3.12.0-linux-amd64.tar.gz
+sudo cp linux-amd64/helm /usr/local/bin/helm
+helm version
+```
+![helm_version](./images/helm_version.png)
+
+helm install chart
+```
+helm install hello ./exam_chart
+```
+![helm_instasll](./images/helm_install.png)
+
+port-forward service and access
+```
+kubectl port-forward service/hello-service 8080:80
+```
+![helm_version](./images/port_forward.png)
+open a new terminal
+```
+curl 127.0.0.1:8080
+```
+![helm_version](./images/access.png)
+---
